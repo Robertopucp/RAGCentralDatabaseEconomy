@@ -1,0 +1,32 @@
+# Modelo fine-tuned (merge de ~9GB y adaptadores LoRA)
+output/LLMfine-tuning/
+
+# Carpetas temporales del SFTTrainer (output_dir="outputs_<config>")
+notebooks/outputs_*/
+
+# Archivos de datos de cada base (se descargan desde Dropbox); se suben solo las fichas
+data/raw/**/data/
+
+# Variables de entorno con API keys
+.env
+
+# Entorno virtual
+.venv/
+
+# Python y Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Archivos temporales de Word
+~$*
+
+# Registro de interacciones de la web (contiene mensajes de usuarios)
+data/interacciones/
+
+# Documentos personales de detalles técnicos (Word)
+Detalles técnicos.docx
+Detalles técnicos de Centralized DataSet.docx
+
+# Caché de kernels compilados por Unsloth
+notebooks/unsloth_compiled_cache/
