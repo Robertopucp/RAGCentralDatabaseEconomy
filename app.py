@@ -104,9 +104,12 @@ with st.sidebar:
     st.markdown("### ⚙️ Configuración")
     st.caption("Los cambios se aplican desde tu siguiente consulta.")
 
+    # El máximo y el valor inicial salen de RAG_TOP_K_ARCHIVOS (.env); el slider
+    # necesita un máximo mayor que el mínimo, por eso nunca baja de 2
     top_k_sources = st.slider(
-        "Número de bases de datos", min_value=1, max_value=3,
-        value=min(Config.RAG_TOP_K_ARCHIVOS, 3),
+        "Número de bases de datos", min_value=1,
+        max_value=max(Config.RAG_TOP_K_ARCHIVOS, 2),
+        value=Config.RAG_TOP_K_ARCHIVOS,
     )
     st.caption("Máximo de bases de datos que el asistente puede usar en una respuesta. "
                "Súbelo si tu investigación combina varios temas.")
