@@ -1,0 +1,15 @@
+# Configuración de la web de Kalish Manta Analytics (streamlit run app.py)
+
+[theme]
+base = "light"
+primaryColor = "#2B7BBE"                # azul claro: botones, links, foco
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#EEF5FB"    # azul muy claro: sidebar, caja de chat
+textColor = "#1F2D3D"
+font = "sans serif"
+
+[server]
+headless = true          # no abre el navegador ni pide email al iniciar (puerto: 8501)
+
+[browser]
+gatherUsageStats = false
