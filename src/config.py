@@ -104,6 +104,24 @@ class Config:
     _ruta_interacciones = os.getenv("INTERACCIONES_PATH", "data/interacciones/interacciones.jsonl")
     INTERACCIONES_PATH = BASE_DIR / _ruta_interacciones if _ruta_interacciones else None
 
+    # ===== CHATS DE LA WEB (para fine-tuning) Y LÍMITES DE USO =====
+    # Carpeta con una conversación completa por archivo JSON (no se sube a GitHub)
+    CHATS_WEB_DIR = BASE_DIR / os.getenv("CHATS_WEB_DIR", "data/chats_web")
+
+    # Máximo de consultas por usuario (sesión de la web), para evitar abusos
+    CHAT_MAX_POR_USUARIO = int(os.getenv("CHAT_MAX_POR_USUARIO", "10"))
+
+    # Usuarios distintos a partir de los cuales se envía un aviso por correo (una vez)
+    AVISO_USUARIOS = int(os.getenv("AVISO_USUARIOS", "50"))
+
+    # Correo del aviso. Con Gmail, SMTP_PASSWORD es una contraseña de aplicación
+    # (myaccount.google.com/apppasswords), no la contraseña normal de la cuenta
+    AVISO_EMAIL_DESTINO = os.getenv("AVISO_EMAIL_DESTINO", "")
+    SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
+    SMTP_PORT = int(os.getenv("SMTP_PORT", "465"))
+    SMTP_USUARIO = os.getenv("SMTP_USUARIO", "")
+    SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
+
     # ===== MEMORIA =====
     # Mensajes de la conversación que se envían al LLM como historial
     MEMORY_K_MESSAGES = int(os.getenv("MEMORY_K_MESSAGES", "10"))
