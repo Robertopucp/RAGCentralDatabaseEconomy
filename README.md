@@ -21,12 +21,6 @@ You describe your research idea (an abstract, a hypothesis, or a professional pr
 
 - **End-to-end GenAI system:** document parsing, chunking, embeddings, vector search, prompt construction, LLM fine-tuning, serving and a public web UI.
 - **Fine-tuned Qwen3.5-4B with QLoRA (Unsloth)** on a consumer 8 GB GPU (RTX 5050 Laptop, Blackwell, CUDA 13). It loads in 4-bit NF4 and uses about 3.5 GB of VRAM at inference time.
-- **Controlled experiments:** two rounds, with a single model load and LoRA weight resets between runs. Adding LoRA to every layer instead of attention only cut validation loss from **0.725 to 0.597**.
-- **Found and fixed a hallucination and memorization problem** that came from a train/serve mismatch. The model is now trained on the exact production prompt, built by the real retriever.
-- **Automated validation of synthetic training data:** 300 new conversations, each checked for retrieval, grounding, absence of links and token length. Result: **0 links and 0 facts outside the retrieved context**.
-- **Data-driven retrieval threshold:** valid research queries score 0.60 to 0.87 and greetings or off-topic messages score 0.25 to 0.47, so the threshold sits at 0.53. A relative margin then filters loosely related datasets.
-- **Deterministic where it matters:** the LLM never writes URLs. The code appends the Dropbox links from PDF metadata, so a link can never be hallucinated or corrupted.
-- **Fully local and private:** open-weight models, no paid APIs, no data sent to third parties. The app is exposed over HTTPS with Tailscale Funnel.
 
 ---
 

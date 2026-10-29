@@ -27,7 +27,7 @@ from src.models import (
     ChatResponse, SearchResponse, SearchResult,
     HealthResponse
 )
-from src.llm_service import build_chatbot
+from src.llm_service import LimiteChatsError, build_chatbot
 
 # ===== INICIALIZACIÓN =====
 # El chatbot (índice FAISS y LLM) se carga una sola vez al iniciar el servidor
@@ -103,6 +103,8 @@ def chat(data: ChatRequest):
         response = chatbot_service.handle_chat(data.user_id, data.message)
         return ChatResponse(answer=response["answer"], sources=response["sources"])
 
+    except LimiteChatsError as e:
+        raise HTTPException(status_code=429, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al procesar mensaje: {e}")
 

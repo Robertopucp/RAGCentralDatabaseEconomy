@@ -24,9 +24,11 @@ __pycache__/
 # Registro de interacciones de la web (contiene mensajes de usuarios)
 data/interacciones/
 
+# Conversaciones completas de la web, para fine-tuning (contienen mensajes de usuarios)
+data/chats_web/
+
 # Documentos personales de detalles técnicos (Word)
-Detalles técnicos.docx
-Detalles técnicos de Centralized DataSet.docx
+Detalles técnicos*.docx
 
 # Caché de kernels compilados por Unsloth
 notebooks/unsloth_compiled_cache/
